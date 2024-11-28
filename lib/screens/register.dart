@@ -19,7 +19,9 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Register')),
+      appBar: AppBar(title: const Text('Register'),
+      backgroundColor: const Color.fromARGB(255, 110, 255, 122),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -52,7 +54,10 @@ class _RegisterState extends State<Register> {
     final existingUser = await _dbHelper.getUserByUsername(username);
     if (existingUser != null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Username already exists. Please choose another.')),
+        const SnackBar(
+          content: Text('Username sudah terdaftar, silakan gunakan username lain.'),
+          backgroundColor: Colors.red,
+          ),
       );
       return;
     }
@@ -68,7 +73,10 @@ class _RegisterState extends State<Register> {
       await prefs.setInt('userId', newUser.id!);
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Registration successful')),
+        const SnackBar(
+          content: Text('Registrasi berhasil!'),
+          backgroundColor: Colors.green,
+          ),
       );
 
       Navigator.pushAndRemoveUntil(

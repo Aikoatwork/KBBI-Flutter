@@ -174,6 +174,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('KBBI'),
+        backgroundColor: const Color.fromARGB(255, 110, 255, 122),
         centerTitle: true,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(50),
@@ -254,7 +255,7 @@ class _HomeState extends State<Home> {
             label: 'Profile',
           ),
           const BottomNavigationBarItem(
-            icon: Icon(Icons.rate_review),
+            icon: Icon(Icons.diversity_3_rounded),
             label: 'Tentang Kami',
           ),
         ],

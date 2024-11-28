@@ -21,7 +21,9 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: const Text('Login'),
+      backgroundColor: const Color.fromARGB(255, 110, 255, 122),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -80,7 +82,7 @@ class _LoginState extends State<Login> {
     final password = _passwordController.text.trim();
 
     if (username.isEmpty || password.isEmpty) {
-      _showSnackBar('Tolong isi semua kolom');
+      _showSnackBar('Tolong isi semua kolom', Colors.red);
       return;
     }
 
@@ -91,7 +93,7 @@ class _LoginState extends State<Login> {
     try {
       final user = await _dbHelper.getUserByUsername(username);
       if (user != null && user.password == password) {
-        _showSnackBar('Login berhasil!');
+        _showSnackBar('Login berhasil!', Colors.green);
 
         MyApp.profilePictureNotifier.value = user.profilePicture;
 
@@ -107,10 +109,10 @@ class _LoginState extends State<Login> {
           (Route<dynamic> route) => false,
         );
       } else {
-        _showSnackBar('Username atau password salah');
+        _showSnackBar('Username atau password salah', Colors.red);
       }
     } catch (e) {
-      _showSnackBar('Error: ${e.toString()}');
+      _showSnackBar('Error: ${e.toString()}', Colors.red);
     } finally {
       setState(() {
         _isLoading = false;
@@ -118,7 +120,7 @@ class _LoginState extends State<Login> {
     }
   }
 
-  void _showSnackBar(String message) {
+  void _showSnackBar(String message, Color color) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(message)),
     );

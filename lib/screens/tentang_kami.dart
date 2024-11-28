@@ -6,6 +6,7 @@ class TentangKami extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tentang Kami'),
+        backgroundColor: const Color.fromARGB(255, 110, 255, 122),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -28,11 +29,11 @@ class TentangKami extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              'Pengembang 1: Bagas Luqman - 124220004',
+              'Bagas Luqman - 124220004',
               style: TextStyle(fontSize: 16),
             ),
             Text(
-              'Pengembang 2: Evan - 124220028',
+              'Evanry Arkananta Ardine - 124220028',
               style: TextStyle(fontSize: 16),
             ),
           ],
